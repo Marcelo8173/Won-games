@@ -15,7 +15,7 @@ export const Input = styled.input`
     appearance: none;
     width: 1.8rem;
     height: 1.8rem;
-    border: 0.2rem solid ${theme.colors.darkGray};
+    border: 0.1rem solid ${theme.colors.darkGray};
     border-radius: 0.2rem;
     transition: background border ${theme.transition.fast};
     position: relative;

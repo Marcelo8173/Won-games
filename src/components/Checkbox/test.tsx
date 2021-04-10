@@ -54,4 +54,14 @@ describe('<Checkbox />', () => {
 
     expect(onCheck).toHaveBeenCalledWith(false)
   })
+
+  it('Should be acessive with lab', () => {
+    renderWithTheme(<Checkbox label="check" labelFor="check" />)
+
+    expect(document.body).toHaveFocus()
+
+    userEvent.tab()
+
+    expect(screen.getByLabelText(/check/i)).toHaveFocus()
+  })
 })

@@ -7,7 +7,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
     backgrounds: {
-      default: 'won-dark'
+      default: 'dark'
     }
   },
   argTypes: {
@@ -19,7 +19,7 @@ export const Default: Story<CheckboxProps> = (args) => (
   <>
     <div style={{ padding: 10 }}>
       <Checkbox
-        // name="category"
+        name="category"
         label="Action"
         labelFor="action"
         isChecked
@@ -28,7 +28,7 @@ export const Default: Story<CheckboxProps> = (args) => (
     </div>
     <div style={{ padding: 10 }}>
       <Checkbox
-        // name="category"
+        name="category"
         label="Adventure"
         labelFor="adventure"
         {...args}
@@ -36,7 +36,7 @@ export const Default: Story<CheckboxProps> = (args) => (
     </div>
     <div style={{ padding: 10 }}>
       <Checkbox
-        // name="category"
+        name="category"
         label="Strategy"
         labelFor="strategy"
         {...args}
