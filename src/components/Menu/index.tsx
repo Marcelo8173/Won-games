@@ -5,8 +5,13 @@ import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outline
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import Logo from 'components/Logo'
 import { useState } from 'react'
+import Button from 'components/Button'
 
-const Menu = () => {
+export type MenuProps = {
+  userName?: string
+}
+
+const Menu = ({ userName }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -33,7 +38,22 @@ const Menu = () => {
         <S.MenuNav>
           <S.MenuLink href="#">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
+          {!!userName && (
+            <>
+              <S.MenuLink href="#">My account</S.MenuLink>
+              <S.MenuLink href="#">Wishlist</S.MenuLink>
+            </>
+          )}
         </S.MenuNav>
+        {!userName && (
+          <S.RegisterBox>
+            <Button fullWidth size="large">
+              Log in now
+            </Button>
+            <span>or</span>
+            <S.CreateAcccount href="/">Sing up</S.CreateAcccount>
+          </S.RegisterBox>
+        )}
       </S.MenuFull>
     </S.Wrapper>
   )
