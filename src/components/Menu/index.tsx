@@ -6,6 +6,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import Logo from 'components/Logo'
 import { useState } from 'react'
 import Button from 'components/Button'
+import MediaMatch from 'components/MediaMatch'
 
 export type MenuProps = {
   userName?: string
@@ -16,12 +17,21 @@ const Menu = ({ userName }: MenuProps) => {
 
   return (
     <S.Wrapper>
-      <S.IconWrapper>
-        <MenuIcon aria-label="Open menu" onClick={() => setIsOpen(true)} />
-      </S.IconWrapper>
+      <MediaMatch lessThan="medium">
+        <S.IconWrapper>
+          <MenuIcon aria-label="Open menu" onClick={() => setIsOpen(true)} />
+        </S.IconWrapper>
+      </MediaMatch>
       <S.LogoWrapper>
         <Logo hiddenOnMobile aria-label="Logo won games" />
       </S.LogoWrapper>
+
+      <MediaMatch greaterThan="medium">
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+        </S.MenuNav>
+      </MediaMatch>
 
       <S.MenuGroup>
         <S.IconWrapper>
@@ -31,6 +41,11 @@ const Menu = ({ userName }: MenuProps) => {
         <S.IconWrapper>
           <ShoppingCartIcon aria-label="open shopping cart" />
         </S.IconWrapper>
+        {!userName && (
+          <MediaMatch greaterThan="medium">
+            <Button>Sing in</Button>
+          </MediaMatch>
+        )}
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -51,7 +66,7 @@ const Menu = ({ userName }: MenuProps) => {
               Log in now
             </Button>
             <span>or</span>
-            <S.CreateAcccount href="/">Sing up</S.CreateAcccount>
+            <S.CreateAccount href="/">Sing up</S.CreateAccount>
           </S.RegisterBox>
         )}
       </S.MenuFull>
